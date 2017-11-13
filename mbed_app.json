@@ -1,0 +1,44 @@
+{
+    "macros": [
+        "MBEDTLS_USER_CONFIG_FILE=\"mbedtls_config.h\"",
+        "OS_STKSIZE=1"
+    ],
+    "config": {
+        "CA_HOST": {
+            "help":"host name or IP of the CMP server",
+            "value": "\"192.168.1.110\""
+        },
+        "USE_EASYCONNECT": {
+            "help":"true, or otherwise Ethernet is used",
+            "value": true
+        },
+        "network-interface":{
+            "help": "options are ETHERNET, WIFI_ESP8266, WIFI_IDW0XX1, WIFI_ODIN, WIFI_RTW, MESH_LOWPAN_ND, MESH_THREAD, CELLULAR_ONBOARD",
+            "value": "WIFI_ESP8266"
+        },
+        "esp8266-tx": {
+            "help": "Pin used as TX (connects to ESP8266 RX)",
+            "value": "PTC17"
+        },
+        "esp8266-rx": {
+            "help": "Pin used as RX (connects to ESP8266 TX)",
+            "value": "PTC16"
+        },
+        "esp8266-debug": {
+            "value": false
+        },
+        "wifi-ssid": {
+            "value": "\"secret\""
+        },
+        "wifi-password": {
+            "value": "\"SieCret1234\""
+        }
+    },
+    "target_overrides": {
+        "*": {
+            "target.features_add": ["NANOSTACK", "LOWPAN_ROUTER", "COMMON_PAL"],
+            "mbed-mesh-api.6lowpan-nd-channel-page": 0,
+            "mbed-mesh-api.6lowpan-nd-channel": 12
+        }
+    }
+}
