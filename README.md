@@ -45,6 +45,7 @@ GNU ARM Embedded Toolchain.
 #### GCC for Linux
 
 The library (including the dependencies) can be build using make
+
     $ make
 
 This results in the **cmpclient** executable
@@ -57,13 +58,15 @@ The GNU ARM Embedded Toolchain is one way to build for Mbed OS.
 
 Information about the needed Mbed CLI can be found in the [Mbed OS documentation] (https://docs.mbed.com/docs/mbed-os-handbook/en/5.1/dev\_tools/cli/).
 
-On Debian the Mbed CLI can be installed ike this:
+On Debian the Mbed CLI can be installed like this:
+
     $ apt-get install python-pip
     $ pip install mbed-cli
 
 The GNU ARM Embedded Toolchain can be downloaded from [here](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads).
 
 Preparing to build
+
     $ mbed config --global GCC\_ARM\_PATH [path of Toolchain bin]
     $ mbed toolchain GCC\_ARM
     $ mbed target K64F
@@ -71,12 +74,14 @@ Preparing to build
 ##### Preparation and building
 
 First, the dependencies need to be deployed:
+
     $ mbed deploy
 
 Then, the firmware can be built:
+
     $ mbed compile
 
-## CLI Reference
+## Configuration / CLI Reference
 
 There are no CLI options as of now, all information needs to be coded into the
 executable.  The following configuration options exist and must be taken into
