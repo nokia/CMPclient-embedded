@@ -9,8 +9,8 @@ gcc_warn=-DDEBUG_UNUSED -Wswitch -DPEDANTIC -pedantic -Wno-long-long -Wall -Wext
 
 CC=gcc
 CFLAGS=-g3 -O0 $(gcc_warn) -I$(IDIR) -I$(CMPCLDIR) -L$(CMPCLDIR) -L$(LDIR)
+CPPFLAGS=-g3 -O0 $(gcc_warn) -I$(IDIR) -I$(CMPCLDIR) -L$(CMPCLDIR) -L$(LDIR)
 ODIR=obj
-IDIR=.
 
 LIBS=-lmbedcrypto -lmbedtls -lmbedx509 -lcmpcl
 
@@ -32,10 +32,6 @@ cmpclient: $(OBJ) $(CMPLIB)
 $(CMPLIB): .FORCE
 	make -C $(CMPCLDIR)
 
-.PHONY: mbedtls
-mbedtls:
-	make -C mbedtls
-
 .PHONY: tags
 tags:
 	-ctags -R .
@@ -43,3 +39,7 @@ tags:
 .PHONY: clean
 clean:
 	rm -f $(ODIR)/*.o cmpclient
+
+.PHONY: distclean
+distclean: clean
+	make -C $(CMPCLDIR) distclean
